@@ -1,0 +1,166 @@
+$font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+
+// Font Weights
+
+$light: 300;
+$book: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+
+
+// Colors
+$pattern-blue: #38B7EA;
+$grey1: #F7F9FA;
+$grey2: #F0F4F7;
+$grey3: #E4E8EB;
+$grey4: #CED6DB;
+$grey5: #8D9599;
+$grey6: #666D70;   
+$grey7: #222526; 
+
+
+// Helpful mixins
+@mixin card-header($strong: false, $light: false) {
+  font: {
+    family: $font-family;
+    size: 24px;
+    weight: if($strong, $medium, $book);
+  }
+  line-height: 18px;
+  color: if($light, $grey5, $grey7);
+  margin-bottom: 24px;
+}
+
+@mixin large-text($strong: false, $light: false) {
+  font: {
+    family: $font-family;
+    size: 16px;
+    weight: if($strong, $medium, $book);
+  }
+  line-height: 20px;
+  color: if($light, $grey5, $grey7);
+}
+
+@mixin medium-text($strong: false, $light: false) {
+  font: {
+    family: $font-family;
+    size: 14px;
+    weight: if($strong, $medium, $book);
+  }
+  line-height: 20px;
+  color: if($light, $grey5, $grey7);
+  margin-bottom: 4px;
+}
+
+@mixin small-text($strong: false, $light: false) {
+  font: {
+    family: $font-family;
+    size: 12px;
+    weight: if($strong, $semi-bold, $medium);
+  }
+  line-height: 16px;
+  color: if($light, $grey5, $grey7);
+  margin-bottom: 18px;
+}
+
+@mixin Card() {
+    padding: 24px;
+    margin: 16px;
+}
+
+body {
+    font: $font-family;
+    background-color: #F7F9FA;
+}
+
+.navbar {
+    background-color: #38B7EA;
+    height: 60px;
+    
+}
+.navbar-default{
+    background-color: #38B7EA;
+    border-radius: 0;
+}
+div .w3-card-2{
+    @include Card;
+    h1{
+        @include card-header(false, true);
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        h3{
+           @include medium-text; 
+        }
+        p {
+            @include small-text(false, true);
+        }
+        h4{
+            @include small-text(true, true);
+            margin-top: 0;
+        }
+
+    }
+}
+.excitement {
+            background-color: $grey4;
+            border-radius: 5px;
+            margin-top: 15px;
+            h4{
+                color: #FFFFFF;
+                margin: 0;
+                font-size: 14px;
+            }
+}
+
+//No idea how to do switches, got code from here: https://proto.io/freebies/onoff/.
+//Didn't know switches were this complex.
+.onoffswitch {
+    position: relative; width: 34px;
+    margin-top: 0px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #CCCCCC; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 16px; padding: 0; line-height: 16px;
+    font-size: 10px; color: white; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "";
+    padding-left: 10px;
+    background-color: #FFFFFF; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "";
+    padding-right: 10px;
+    background-color: #FFFFFF; color: #666666;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 12px; margin: 2px;
+    background: #A1A1A1;
+    position: absolute; top: 0; bottom: 0;
+    right: 14px;
+    border: 2px solid #CCCCCC; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #27A1CA; 
+}
